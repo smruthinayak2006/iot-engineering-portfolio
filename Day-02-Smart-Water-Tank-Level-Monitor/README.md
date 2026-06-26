@@ -1,100 +1,35 @@
-# Smart Fire Detection System 🔥
+# Smart Water Tank Level Monitor
 
 ## Overview
 
-An embedded safety monitoring system using Arduino Uno and TMP36 temperature sensor to detect abnormal temperature conditions and trigger automatic alerts.
-
-This project demonstrates sensor interfacing, embedded programming, and IoT product design fundamentals.
-
----
-
-## Problem Statement
-
-Fire accidents in homes, industries, and server rooms require early detection systems.
-
-This project provides a low-cost automated monitoring system capable of detecting high temperature conditions and activating warning indicators.
-
----
+An Arduino-based embedded monitoring system that measures water tank levels using an HC-SR04 ultrasonic sensor and provides visual and audible alerts.
 
 ## Features
 
-- Real-time temperature monitoring
-- Automatic fire risk detection
-- LED based status indication
-- Buzzer emergency alert
-- Serial monitor logging
+- Real-time distance measurement
+- Three water level states
+- LED indicators
+- Buzzer alert
+- Serial monitoring
 
----
-
-## Hardware Components
+## Components
 
 - Arduino Uno
-- TMP36 Temperature Sensor
-- Red LED
-- Green LED
+- HC-SR04
+- 3 LEDs
 - Piezo Buzzer
-- Resistors
+- 220Ω Resistors
 
----
+## Skills Learned
 
-## Software Used
-
-- Tinkercad Circuits
-- Arduino IDE
-- Embedded C++
-
----
-
-## System Architecture
-
-
-Temperature Sensor
-        |
-        v
-Arduino UNO
-        |
-Temperature Processing
-        |
-Decision Algorithm
-        |
-   -------------
-   |           |
-  LEDs       Buzzer
-
-
----
-
-## Working
-
-The TMP36 sensor continuously measures temperature.
-
-Arduino reads sensor voltage through ADC and converts it into Celsius.
-
-If temperature crosses the safety threshold:
-
-- Red LED turns ON
-- Buzzer activates
-
-Otherwise:
-
-- Green LED remains ON
-
----
-
-## Concepts Learned
-
-- Sensor interfacing
-- ADC conversion
-- GPIO control
-- Embedded decision making
-- Hardware debugging
-
----
+- Ultrasonic sensing
+- Time-of-flight measurement
+- State-based programming
+- Modular embedded firmware
 
 ## Future Improvements
 
-- ESP32 WiFi connectivity
-- MQTT alerts
-- Mobile dashboard
-- Cloud monitoring
-- Secure device communication
+- ESP32
+- IoT Dashboard
+- MQTT
+- Mobile Alerts
