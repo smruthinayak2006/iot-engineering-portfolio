@@ -8,12 +8,15 @@ A collection of hands-on IoT and embedded systems projects built using Arduino, 
 
 | Day | Project | Status |
 |------|---------|--------|
+| Day   | Project                          | Status |
+| ----- | -------------------------------- | ------ |
 | Day 1 | Smart Fire Detection System | ✅ |
 | Day 2 | Smart Water Tank Level Monitor | ✅ |
 | Day 3 | Smart Intrusion Detection System | ✅ |
 | Day 4 | Smart Environment Monitor | ✅ |
-| Day 5 | Smart Street Light Automation | ⏳ |
-| Day 6 | Smart Parking System | ⏳ |
+| Day 5 | Smart Street Light Automation | ✅ |
+| Day 6 | Smart Parking System | ✅ |
+| Day 7 | Smart Gas Leakage Detector | ⏳ |
 | Day 7 | Gas Leakage Detection System | ⏳ |
 | Day 8 | Smart Irrigation System | ⏳ |
 | Day 9 | RFID Door Access System | ⏳ |
