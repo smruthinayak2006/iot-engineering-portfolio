@@ -6,9 +6,6 @@ A collection of hands-on IoT and embedded systems projects built using Arduino, 
 
 ## Learning Roadmap
 
-| Day | Project | Status |
-|------|---------|--------|
-| Day   | Project                          | Status |
 | ----- | -------------------------------- | ------ |
 | Day | Project | Status |
 |------|---------|--------|
@@ -19,10 +16,9 @@ A collection of hands-on IoT and embedded systems projects built using Arduino, 
 | Day 5 | Smart Street Light Automation | ✅ |
 | Day 6 | Smart Parking System | ✅ |
 | Day 7 | Smart Gas Leakage Detection | ✅ |
-| Day 7 | Gas Leakage Detection System | ⏳ |
-| Day 8 | Smart Irrigation System | ⏳ |
-| Day 9 | RFID Door Access System | ⏳ |
-| Day 10 | Home Automation System | ⏳ |
+| Day 8 | Smart Soil Moisture Monitor | ✅ |
+| Day 9 | Smart Home Automation | ⏳ |
+| Day 10 | Smart Weather Station | ⏳ |
 | Day 11 | IoT Weather Station (ESP32) | ⏳ |
 | Day 12 | MQTT Sensor Dashboard | ⏳ |
 | Day 13 | Cloud Connected IoT Device | ⏳ |
