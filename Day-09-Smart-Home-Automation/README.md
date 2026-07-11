@@ -2,40 +2,43 @@
 
 ## Overview
 
-A simple Arduino-based smart home automation system that combines a light sensor (LDR) and a PIR motion sensor to monitor lighting conditions and detect movement. The system automatically switches between Day Mode, Night Mode, and Intruder Alert.
+The Smart Home Automation System is an Arduino Uno–based embedded project that combines an LDR sensor and a PIR motion sensor to monitor ambient lighting and detect human movement. Based on environmental conditions, the system automatically switches between **Day Mode**, **Night Mode**, and **Intruder Alert**, providing visual indications through LEDs, an audible alarm using a piezo buzzer, and live updates on the Serial Monitor.
 
 ---
 
 ## Features
 
-- Automatic Day/Night detection
+- Automatic day and night detection
 - Motion detection using PIR sensor
-- Intruder alert with buzzer
-- Three LED status indication
-- Real-time Serial Monitor updates
-- Beginner-friendly Arduino project
+- Intruder alert system
+- LED-based status indication
+- Piezo buzzer alarm
+- Live Serial Monitor output
+- Beginner-friendly home automation project
 
 ---
 
 ## Components Used
 
-- Arduino Uno
-- PIR Motion Sensor
-- LDR Sensor Module
-- Red LED
-- Yellow LED
-- Green LED
-- Piezo Buzzer
-- 3 × 220Ω Resistors
-- Jumper Wires
+| Component | Quantity |
+|----------|:--------:|
+| Arduino Uno | 1 |
+| PIR Motion Sensor | 1 |
+| LDR Sensor Module | 1 |
+| Green LED | 1 |
+| Yellow LED | 1 |
+| Red LED | 1 |
+| Piezo Buzzer | 1 |
+| 220Ω Resistors | 3 |
+| Jumper Wires | As Required |
 
 ---
 
 ## Pin Connections
 
 | Component | Arduino Pin |
-|-----------|-------------|
-| PIR Sensor | D2 |
+|----------|-------------|
+| PIR Motion Sensor | D2 |
 | LDR Sensor (AO) | A0 |
 | Green LED | D8 |
 | Yellow LED | D9 |
@@ -44,24 +47,58 @@ A simple Arduino-based smart home automation system that combines a light sensor
 
 ---
 
-## Working
+## Working Principle
 
-### Day Mode ☀️
-- Bright environment detected
-- Green LED ON
-- Buzzer OFF
+The LDR sensor continuously measures ambient light intensity, while the PIR sensor detects motion.
 
-### Night Mode 🌙
-- Dark environment
-- Yellow LED ON
-- Home secured
-- Buzzer OFF
+Arduino processes both sensor readings to determine the current operating mode.
 
-### Intruder Alert 🚨
-- Dark environment
-- Motion detected
-- Red LED ON
-- Buzzer ON
+- **Day Mode**
+  - Green LED ON
+  - Yellow LED OFF
+  - Red LED OFF
+  - Buzzer OFF
+
+- **Night Mode**
+  - Yellow LED ON
+  - Green LED OFF
+  - Red LED OFF
+  - Home remains secure
+  - Buzzer OFF
+
+- **Intruder Alert**
+  - Triggered when motion is detected during Night Mode
+  - Red LED ON
+  - Green LED OFF
+  - Yellow LED OFF
+  - Piezo buzzer activated
+
+The current light level, motion status, and operating mode are displayed on the Serial Monitor.
+
+---
+
+## Project Structure
+
+```text
+Day-09-Smart-Home-Automation/
+│
+├── circuit/
+│   └── circuit_diagram.png
+│
+├── code/
+│   └── smart_home_automation.ino
+│
+├── docs/
+│   └── architecture.md
+│
+├── screenshots/
+│   ├── day_mode.png
+│   ├── night_mode.png
+│   ├── intruder_alert.png
+│   └── serial_monitor.png
+│
+└── README.md
+```
 
 ---
 
@@ -69,7 +106,7 @@ A simple Arduino-based smart home automation system that combines a light sensor
 
 ### Circuit Diagram
 
-![Circuit](circuit/circuit_diagram.png)
+![Circuit Diagram](circuit/circuit_diagram.png)
 
 ### Day Mode
 
@@ -91,25 +128,28 @@ A simple Arduino-based smart home automation system that combines a light sensor
 
 ## Concepts Learned
 
-- Analog Sensor Interfacing
-- Motion Detection
-- Conditional Programming
-- Home Automation
-- Embedded Security Systems
-- Arduino GPIO Control
+- LDR sensor interfacing
+- PIR motion sensor interfacing
+- Analog and digital sensor integration
+- Multi-condition decision making
+- Embedded home automation
+- GPIO control
+- Serial communication for debugging
 
 ---
 
 ## Future Improvements
 
-- ESP32 Wi-Fi Integration
-- Mobile Notifications
-- Smart Home Dashboard
-- Cloud Monitoring
-- Relay-based Appliance Control
+- ESP32 Wi-Fi connectivity
+- Email and mobile notifications
+- Web-based home monitoring dashboard
+- Smart appliance control using relays
+- Cloud-based event logging
 
 ---
 
 ## Author
 
-Smruthi Nayak
+**Smruthi Nayak**
+
+B.Tech Computer Science Engineering

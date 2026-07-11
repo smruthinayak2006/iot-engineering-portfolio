@@ -2,99 +2,131 @@
 
 ## Overview
 
-An embedded safety monitoring system using Arduino Uno and TMP36 temperature sensor to detect abnormal temperature conditions and trigger automatic alerts.
-
-This project demonstrates sensor interfacing, embedded programming, and IoT product design fundamentals.
-
----
-
-## Problem Statement
-
-Fire accidents in homes, industries, and server rooms require early detection systems.
-
-This project provides a low-cost automated monitoring system capable of detecting high temperature conditions and activating warning indicators.
+The Smart Fire Detection System is an Arduino Uno–based safety monitoring project that continuously measures ambient temperature using a TMP36 temperature sensor. The system identifies abnormal temperature conditions and provides both visual and audible alerts, making it suitable for demonstrating basic fire monitoring and embedded system automation.
 
 ---
 
 ## Features
 
 - Real-time temperature monitoring
-- Automatic fire risk detection
-- LED based status indication
-- Buzzer emergency alert
-- Serial monitor logging
+- Automatic fire risk detection using threshold values
+- LED-based system status indication
+- Audible alarm using a piezo buzzer
+- Live sensor readings on the Serial Monitor
 
 ---
 
-## Hardware Components
+## Components Used
 
-- Arduino Uno
-- TMP36 Temperature Sensor
-- Red LED
-- Green LED
-- Piezo Buzzer
-- Resistors
-
----
-
-## Software Used
-
-- Tinkercad Circuits
-- Arduino IDE
-- Embedded C++
+| Component | Quantity |
+|----------|:--------:|
+| Arduino Uno | 1 |
+| TMP36 Temperature Sensor | 1 |
+| Green LED | 1 |
+| Red LED | 1 |
+| Piezo Buzzer | 1 |
+| 220Ω Resistors | 2 |
+| Jumper Wires | As Required |
 
 ---
 
-## System Architecture
+## Pin Connections
 
-
-Temperature Sensor
-        |
-        v
-Arduino UNO
-        |
-Temperature Processing
-        |
-Decision Algorithm
-        |
-   -------------
-   |           |
-  LEDs       Buzzer
-
+| Component | Arduino Pin |
+|----------|-------------|
+| TMP36 Sensor | A0 |
+| Green LED | D8 |
+| Red LED | D9 |
+| Piezo Buzzer | D6 |
 
 ---
 
-## Working
+## Working Principle
 
-The TMP36 sensor continuously measures temperature.
+The TMP36 temperature sensor continuously measures the surrounding temperature and sends an analog voltage to the Arduino Uno.
 
-Arduino reads sensor voltage through ADC and converts it into Celsius.
+The Arduino converts the analog value into temperature in degrees Celsius and compares it against a predefined threshold.
 
-If temperature crosses the safety threshold:
+- **Normal Temperature**
+  - Green LED ON
+  - Red LED OFF
+  - Buzzer OFF
 
-- Red LED turns ON
-- Buzzer activates
+- **High Temperature**
+  - Red LED ON
+  - Green LED OFF
+  - Buzzer ON
+  - Warning displayed on the Serial Monitor
 
-Otherwise:
+---
 
-- Green LED remains ON
+## Project Structure
+
+```
+Day-01-Smart-Fire-Detection-System/
+│
+├── circuit/
+│   └── circuit_diagram.png
+│
+├── code/
+│   └── smart_fire_detection.ino
+│
+├── docs/
+│   └── architecture.md
+│
+├── screenshots/
+│   ├── normal_mode.png
+│   ├── alert_mode.png
+│   └── serial_monitor.png
+│
+└── README.md
+```
+
+---
+
+## Screenshots
+
+### Circuit Diagram
+
+![Circuit Diagram](circuit/circuit_diagram.png)
+
+### Normal Mode
+
+![Normal Mode](screenshots/normal_mode.png)
+
+### Alert Mode
+
+![Alert Mode](screenshots/alert_mode.png)
+
+### Serial Monitor
+
+![Serial Monitor](screenshots/serial_monitor.png)
 
 ---
 
 ## Concepts Learned
 
-- Sensor interfacing
-- ADC conversion
-- GPIO control
-- Embedded decision making
-- Hardware debugging
+- Analog sensor interfacing
+- ADC (Analog-to-Digital Conversion)
+- Temperature monitoring
+- GPIO programming
+- Threshold-based decision making
+- Serial communication for debugging
 
 ---
 
 ## Future Improvements
 
-- ESP32 WiFi connectivity
-- MQTT alerts
-- Mobile dashboard
-- Cloud monitoring
-- Secure device communication
+- ESP32 Wi-Fi integration
+- Email and mobile notifications
+- Cloud-based temperature logging
+- Web dashboard for remote monitoring
+- Historical temperature analytics
+
+---
+
+## Author
+
+**Smruthi Nayak**
+
+B.Tech Computer Science Engineering

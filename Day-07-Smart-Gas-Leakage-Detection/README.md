@@ -2,77 +2,79 @@
 
 ## Overview
 
-An Arduino-based safety system that continuously monitors gas concentration using an MQ-2 gas sensor. The system classifies gas levels into Safe, Warning, and Danger states while providing visual and audible alerts.
+The Smart Gas Leakage Detection System is an Arduino Uno–based safety monitoring project that continuously measures gas concentration using an MQ-2 gas sensor. Based on the detected gas level, the system classifies the environment into **Safe**, **Warning**, or **Danger** states, providing visual alerts through LEDs, an audible alarm using a piezo buzzer, and live updates on the Serial Monitor.
 
 ---
 
 ## Features
 
-- Real-time gas leakage monitoring
-- Three alert levels
-- LED status indication
+- Real-time gas concentration monitoring
+- Three-level safety classification
+- LED-based visual indication
 - Piezo buzzer alarm
-- Serial monitor logging
-- Adjustable gas concentration simulation in Wokwi
+- Live Serial Monitor output
+- Adjustable gas simulation in Wokwi
 
 ---
 
-## Components
+## Components Used
 
-- Arduino Uno
-- MQ-2 Gas Sensor
-- Piezo Buzzer
-- Red LED
-- Yellow LED
-- Green LED
-- 3 × 220Ω Resistors
-- Jumper Wires
+| Component | Quantity |
+|----------|:--------:|
+| Arduino Uno | 1 |
+| MQ-2 Gas Sensor Module | 1 |
+| Green LED | 1 |
+| Yellow LED | 1 |
+| Red LED | 1 |
+| Piezo Buzzer | 1 |
+| 220Ω Resistors | 3 |
+| Jumper Wires | As Required |
 
 ---
 
-## Circuit Connections
+## Pin Connections
 
 | Component | Arduino Pin |
-|-----------|-------------|
-| MQ-2 AOUT | A0 |
-| MQ-2 VCC | 5V |
-| MQ-2 GND | GND |
+|----------|-------------|
+| MQ-2 Analog Output | A0 |
 | Green LED | D8 |
 | Yellow LED | D9 |
 | Red LED | D10 |
-| Buzzer | D11 |
+| Piezo Buzzer | D11 |
 
 ---
 
-## Working
+## Working Principle
 
-### Safe Mode
+The MQ-2 gas sensor continuously measures the surrounding gas concentration.
 
-- Gas level below 300
-- Green LED ON
-- Buzzer OFF
+Arduino reads the analog sensor value and compares it with predefined threshold values to determine the current safety level.
 
----
+- **Safe Mode**
+  - Green LED ON
+  - Yellow LED OFF
+  - Red LED OFF
+  - Buzzer OFF
 
-### Warning Mode
+- **Warning Mode**
+  - Yellow LED ON
+  - Green LED OFF
+  - Red LED OFF
+  - Short warning beep
 
-- Gas level between 300 and 649
-- Yellow LED ON
-- Short warning beep
+- **Danger Mode**
+  - Red LED ON
+  - Green LED OFF
+  - Yellow LED OFF
+  - Continuous buzzer alarm
 
----
-
-### Danger Mode
-
-- Gas level above 650
-- Red LED ON
-- Continuous buzzer alarm
+The current gas level and system status are displayed on the Serial Monitor.
 
 ---
 
 ## Project Structure
 
-```
+```text
 Day-07-Smart-Gas-Leakage-Detection/
 │
 ├── circuit/
@@ -95,41 +97,49 @@ Day-07-Smart-Gas-Leakage-Detection/
 
 ---
 
-## Output
+## Screenshots
 
-### Safe
-- Green LED ON
-- No buzzer
+### Circuit Diagram
 
-### Warning
-- Yellow LED ON
-- Intermittent buzzer
+![Circuit Diagram](circuit/circuit_diagram.png)
 
-### Danger
-- Red LED ON
-- Continuous buzzer
+### Safe Mode
+
+![Safe Mode](screenshots/safe_mode.png)
+
+### Warning Mode
+
+![Warning Mode](screenshots/warning_mode.png)
+
+### Danger Mode
+
+![Danger Mode](screenshots/danger_mode.png)
+
+### Serial Monitor
+
+![Serial Monitor](screenshots/serial_monitor.png)
 
 ---
 
 ## Concepts Learned
 
-- Analog sensor interfacing
+- MQ-2 gas sensor interfacing
+- Analog sensor reading
 - ADC (Analog-to-Digital Conversion)
 - Threshold-based decision making
 - Multi-level alert systems
 - Embedded safety monitoring
-- GPIO control
-- Serial debugging
+- Serial communication for debugging
 
 ---
 
 ## Future Improvements
 
-- GSM/SMS alerts
-- Wi-Fi notifications using ESP32
-- LCD/OLED display
-- Cloud monitoring dashboard
-- Mobile application integration
+- ESP32 Wi-Fi connectivity
+- Email and mobile notifications
+- Cloud-based monitoring dashboard
+- Historical gas level logging
+- Integration with smart home safety systems
 
 ---
 
@@ -137,6 +147,4 @@ Day-07-Smart-Gas-Leakage-Detection/
 
 **Smruthi Nayak**
 
-B.Tech Computer Science & Engineering
-
-IoT Engineering Portfolio
+B.Tech Computer Science Engineering

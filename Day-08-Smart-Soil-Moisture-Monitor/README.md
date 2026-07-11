@@ -2,7 +2,7 @@
 
 ## Overview
 
-An Arduino-based soil moisture monitoring system that continuously measures soil moisture levels and classifies the soil as Wet, Moderate, or Dry. The system provides visual indication using LEDs and alerts through a buzzer when the soil becomes too dry.
+The Smart Soil Moisture Monitor is an Arduino Uno–based embedded system that continuously measures soil moisture using an analog moisture sensor (simulated with a potentiometer in Wokwi). Based on the measured moisture level, the system classifies the soil as **Wet**, **Moderate**, or **Dry**, providing visual feedback through LEDs, an audible alert using a piezo buzzer, and live readings on the Serial Monitor.
 
 ---
 
@@ -10,71 +10,110 @@ An Arduino-based soil moisture monitoring system that continuously measures soil
 
 - Real-time soil moisture monitoring
 - Three moisture status levels
-- LED status indication
-- Buzzer alert for dry soil
-- Serial Monitor output
-- Beginner-friendly Arduino project
+- LED-based status indication
+- Piezo buzzer alert for dry soil
+- Live Serial Monitor output
+- Beginner-friendly embedded system project
 
 ---
 
 ## Components Used
 
-- Arduino Uno
-- Soil Moisture Sensor (Potentiometer in Wokwi)
-- Red LED
-- Yellow LED
-- Green LED
-- 3 × 220Ω Resistors
-- Piezo Buzzer
-- Jumper Wires
+| Component | Quantity |
+|----------|:--------:|
+| Arduino Uno | 1 |
+| Soil Moisture Sensor *(Potentiometer in Wokwi)* | 1 |
+| Green LED | 1 |
+| Yellow LED | 1 |
+| Red LED | 1 |
+| Piezo Buzzer | 1 |
+| 220Ω Resistors | 3 |
+| Jumper Wires | As Required |
 
 ---
 
 ## Pin Connections
 
 | Component | Arduino Pin |
-|-----------|-------------|
-| Soil Sensor | A0 |
+|----------|-------------|
+| Soil Moisture Sensor | A0 |
 | Green LED | D8 |
 | Yellow LED | D9 |
 | Red LED | D10 |
-| Buzzer | D6 |
+| Piezo Buzzer | D6 |
 
 ---
 
-## Working
+## Working Principle
 
-### Wet Soil
-- Green LED ON
-- Buzzer OFF
+The soil moisture sensor continuously measures the moisture content of the soil.
 
-### Moderate Moisture
-- Yellow LED ON
-- Buzzer OFF
+Arduino reads the analog sensor value and compares it with predefined threshold values to determine the current soil condition.
 
-### Dry Soil
-- Red LED ON
-- Buzzer ON
+- **Wet Soil**
+  - Green LED ON
+  - Yellow LED OFF
+  - Red LED OFF
+  - Buzzer OFF
+
+- **Moderate Soil**
+  - Yellow LED ON
+  - Green LED OFF
+  - Red LED OFF
+  - Buzzer OFF
+
+- **Dry Soil**
+  - Red LED ON
+  - Green LED OFF
+  - Yellow LED OFF
+  - Buzzer ON
+
+The current moisture value and soil status are displayed on the Serial Monitor.
+
+---
+
+## Project Structure
+
+```text
+Day-08-Smart-Soil-Moisture-Monitor/
+│
+├── circuit/
+│   └── circuit_diagram.png
+│
+├── code/
+│   └── smart_soil_moisture_monitor.ino
+│
+├── docs/
+│   └── architecture.md
+│
+├── screenshots/
+│   ├── wet_soil.png
+│   ├── moderate_soil.png
+│   ├── dry_soil.png
+│   └── serial_monitor.png
+│
+└── README.md
+```
 
 ---
 
 ## Screenshots
 
-### Circuit
+### Circuit Diagram
 
-![Circuit](circuit/circuit_diagram.png)
+![Circuit Diagram](circuit/circuit_diagram.png)
 
 ### Wet Soil
 
-![Wet](screenshots/wet_soil.png)
+![Wet Soil](screenshots/wet_soil.png)
 
 ### Moderate Soil
 
-![Moderate](screenshots/moderate_soil.png)
+![Moderate Soil](screenshots/moderate_soil.png)
 
 ### Dry Soil
 
-![Dry](screenshots/dry_soil.png)
+![Dry Soil](screenshots/dry_soil.png)
 
 ### Serial Monitor
 
@@ -84,24 +123,27 @@ An Arduino-based soil moisture monitoring system that continuously measures soil
 
 ## Concepts Learned
 
-- Analog Sensor Reading
-- ADC Conversion
-- Threshold-based Decision Making
-- Digital Output Control
-- Embedded Monitoring Systems
+- Analog sensor interfacing
+- ADC (Analog-to-Digital Conversion)
+- Threshold-based decision making
+- Embedded monitoring systems
+- GPIO control
+- Serial communication for debugging
 
 ---
 
 ## Future Improvements
 
-- IoT Dashboard
-- ESP32 Wi-Fi Integration
-- Automatic Irrigation Pump
-- Mobile Notifications
-- Cloud Monitoring
+- ESP32 Wi-Fi connectivity
+- Automatic irrigation pump control
+- Web-based monitoring dashboard
+- Email and mobile notifications
+- Historical soil moisture data logging
 
 ---
 
 ## Author
 
-Smruthi Nayak
+**Smruthi Nayak**
+
+B.Tech Computer Science Engineering
