@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ESP32 Smart Weather Station</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="css/main.css">
+
+</head>
+
+<body>
+
+    <main class="dashboard">
+
+        <!-- ========================================= -->
+        <!-- Header                                    -->
+        <!-- ========================================= -->
+
+        <header class="dashboard-header">
+
+            <div class="header-left">
+
+                <h1>
+
+                    <i class="fa-solid fa-cloud-sun"></i>
+
+                    ESP32 Smart Weather Station
+
+                </h1>
+
+                <p>
+
+                    Environmental Monitoring Dashboard
+
+                </p>
+
+            </div>
+
+            <div class="header-right">
+
+                <span id="connectionBadge">
+
+                    <i class="fa-solid fa-circle"></i>
+
+                    ESP32 Connected
+
+                </span>
+
+            </div>
+
+        </header>
+
+        <!-- ========================================= -->
+        <!-- Top Information Chips                     -->
+        <!-- ========================================= -->
+
+        <section class="info-strip">
+
+            <div class="chip">
+
+                <i class="fa-solid fa-circle-play"></i>
+
+                LIVE
+
+            </div>
+
+            <div class="chip">
+
+                <i class="fa-solid fa-microchip"></i>
+
+                DHT22
+
+            </div>
+
+            <div class="chip">
+
+                <i class="fa-solid fa-wifi"></i>
+
+                WiFi
+
+            </div>
+
+            <div class="chip">
+
+                <i class="fa-solid fa-clock-rotate-left"></i>
+
+                Refresh 3 sec
+
+            </div>
+
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Sensor Cards                              -->
+        <!-- ========================================= -->
+
+        <section class="sensor-grid">
+
+            <!-- Temperature -->
+
+            <article class="card temperature-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-temperature-three-quarters"></i>
+
+                </div>
+
+                <h3>Temperature</h3>
+
+                <h2 id="temperature">
+
+                    -- °C
+
+                </h2>
+
+            </article>
+
+            <!-- Humidity -->
+
+            <article class="card humidity-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-droplet"></i>
+
+                </div>
+
+                <h3>Humidity</h3>
+
+                <h2 id="humidity">
+
+                    -- %
+
+                </h2>
+
+            </article>
+
+            <!-- Status -->
+
+            <article class="card status-card">
+
+                <div class="card-icon">
+
+                    <i class="fa-solid fa-satellite-dish"></i>
+
+                </div>
+
+                <h3>
+
+                    Current Status
+
+                </h3>
+
+                <div id="statusBadge">
+
+                    Waiting...
+
+                </div>
+
+                <p id="statusDescription">
+
+                    Waiting for sensor data...
+
+                </p>
+
+            </article>
+
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Charts                                    -->
+        <!-- ========================================= -->
+
+        <section class="chart-grid">
+
+            <article class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                            Temperature Trend
+
+                        </h3>
+
+                        <span>
+
+                            Last 20 Samples
+
+                        </span>
+
+                    </div>
+
+                    <h2 id="currentTemp">
+
+                        -- °C
+
+                    </h2>
+
+                </div>
+
+                <div class="chart-container">
+
+    <canvas id="temperatureChart"></canvas>
+
+</div>
+
+            </article>
+
+            <article class="chart-card">
+
+                <div class="chart-header">
+
+                    <div>
+
+                        <h3>
+
+                            <i class="fa-solid fa-chart-line"></i>
+
+                            Humidity Trend
+
+                        </h3>
+
+                        <span>
+
+                            Last 20 Samples
+
+                        </span>
+
+                    </div>
+
+                    <h2 id="currentHumidity">
+
+                        -- %
+
+                    </h2>
+
+                </div>
+
+                <canvas id="humidityChart"></canvas>
+
+            </article>
+
+        </section>
+
+        <!-- ========================================= -->
+        <!-- Footer Cards                              -->
+        <!-- ========================================= -->
+
+        <section class="footer-grid">
+
+            <article class="footer-card">
+
+                <i class="fa-solid fa-wifi"></i>
+
+                <div>
+
+                    <h4>WiFi</h4>
+
+                    <span id="wifiStatus">
+
+                        Connected
+
+                    </span>
+
+                </div>
+
+            </article>
+
+            <article class="footer-card">
+
+                <i class="fa-solid fa-microchip"></i>
+
+                <div>
+
+                    <h4>Sensor</h4>
+
+                    <span>
+
+                        DHT22 Online
+
+                    </span>
+
+                </div>
+
+            </article>
+
+            <article class="footer-card">
+
+                <i class="fa-solid fa-network-wired"></i>
+
+                <div>
+
+                    <h4>IP Address</h4>
+
+                    <span id="ipAddress">
+
+                        ---
+
+                    </span>
+
+                </div>
+
+            </article>
+
+            <article class="footer-card">
+
+                <i class="fa-solid fa-clock"></i>
+
+                <div>
+
+                    <h4>Last Updated</h4>
+
+                    <span id="lastUpdated">
+
+                        ---
+
+                    </span>
+
+                </div>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <!-- Libraries -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Entry Point -->
+
+    <script type="module"
+            src="js/app.js"></script>
+
+</body>
+
+</html>

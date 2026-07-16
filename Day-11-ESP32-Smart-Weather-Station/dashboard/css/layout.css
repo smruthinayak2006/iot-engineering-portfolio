@@ -1,0 +1,235 @@
+/*
+============================================================
+
+IoT Dashboard Framework
+Layout
+
+============================================================
+*/
+
+/* ==========================================================
+   Dashboard
+========================================================== */
+
+.dashboard{
+
+    max-width:1400px;
+
+    margin:30px auto;
+
+    padding:20px;
+
+}
+
+
+/* ==========================================================
+   Header
+========================================================== */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:flex-start;
+
+    gap:30px;
+
+    margin-bottom:25px;
+
+}
+
+.header-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+
+/* ==========================================================
+   Top Chips
+========================================================== */
+
+.info-strip{
+
+    display:flex;
+
+    flex-wrap:wrap;
+
+    gap:14px;
+
+    margin-bottom:30px;
+
+}
+
+
+/* ==========================================================
+   Sensor Cards
+========================================================== */
+
+.sensor-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(3,1fr);
+
+    gap:22px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ==========================================================
+   Chart Grid
+========================================================== */
+
+.chart-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:22px;
+
+    margin-bottom:25px;
+
+}
+
+
+/* ==========================================================
+   Footer
+========================================================== */
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+
+/* ==========================================================
+   Shared Card Layout
+========================================================== */
+
+.card,
+
+.chart-card,
+
+.footer-card{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.card{
+
+    justify-content:flex-start;
+
+    min-height:240px;
+
+}
+
+.chart-card{
+
+    min-height:420px;
+
+}
+
+.footer-card{
+
+    flex-direction:row;
+
+    align-items:center;
+
+}
+
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media (max-width:1200px){
+
+    .sensor-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media (max-width:900px){
+
+    .chart-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .dashboard{
+
+        padding:15px;
+
+    }
+
+    .dashboard-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .sensor-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}
+
+@media (max-width:500px){
+
+    .info-strip{
+
+        gap:10px;
+
+    }
+
+}

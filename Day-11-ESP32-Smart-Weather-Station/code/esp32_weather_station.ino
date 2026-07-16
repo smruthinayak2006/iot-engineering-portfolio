@@ -40,7 +40,7 @@ String description = "Pleasant Conditions";
 void connectWiFi();
 void readSensor();
 void updateIndicators();
-void handleRoot();
+void handleData();
 
 // ======================
 // Setup
@@ -63,7 +63,7 @@ void setup() {
 
   connectWiFi();
 
-  server.on("/", handleRoot);
+  server.on("/data", handleData);
 
   server.begin();
 
@@ -166,7 +166,23 @@ void updateIndicators() {
   }
 }
 
-void handleRoot() {
+void handleData() {
 
-  server.send(200, "text/plain", "ESP32 Weather Station Running");
+    String json = "{";
+
+    json += "\"temperature\":";
+    json += String(temperature,1);
+
+    json += ",\"humidity\":";
+    json += String(humidity,1);
+
+    json += ",\"status\":\"";
+    json += weatherStatus;
+
+    json += "\",\"description\":\"";
+    json += description;
+
+    json += "\"}";
+
+    server.send(200,"application/json",json);
 }
