@@ -7,7 +7,7 @@ API Module
 ============================================================
 */
 
-import { API, STATUS } from "./config.js";
+import { CONFIG, STATUS } from "./config.js";
 import SensorData from "./models/SensorData.js";
 
 /*
@@ -20,15 +20,9 @@ export async function fetchSensorData() {
 
     try {
 
-        const response = await fetch(API.endpoint, {
+        const response = await fetch(CONFIG.API_URL, {
 
             method: "GET",
-
-            headers: {
-
-                "Content-Type": "application/json"
-
-            },
 
             cache: "no-store"
 
@@ -36,32 +30,47 @@ export async function fetchSensorData() {
 
         if (!response.ok) {
 
-            throw new Error(
-                `HTTP ${response.status}`
-            );
+            throw new Error(`HTTP ${response.status}`);
 
         }
 
         const data = await response.json();
 
-        return new SensorData(data);
+        return new SensorData({
+
+            temperature: Number(data.temperature),
+
+            humidity: Number(data.humidity),
+
+            status: data.status,
+
+            description: data.description,
+
+            timestamp: new Date().toLocaleTimeString(),
+
+            online: true
+
+        });
 
     }
 
     catch (error) {
 
-        console.error(
-            "API Error:",
-            error.message
-        );
+        console.error("ESP32 Connection Error:", error);
 
         return new SensorData({
 
+            temperature: null,
+
+            humidity: null,
+
             status: STATUS.OFFLINE,
 
-            description:
+            description: "Unable to reach ESP32.",
 
-                "Unable to communicate with ESP32."
+            timestamp: new Date().toLocaleTimeString(),
+
+            online: false
 
         });
 
@@ -77,23 +86,21 @@ Start Polling
 
 export function startDataPolling(callback) {
 
-    async function refresh() {
+    async function update() {
 
-        const sensorData =
-
-            await fetchSensorData();
+        const sensorData = await fetchSensorData();
 
         callback(sensorData);
 
     }
 
-    refresh();
+    update();
 
     return setInterval(
 
-        refresh,
+        update,
 
-        API.refreshInterval
+        CONFIG.REFRESH_INTERVAL
 
     );
 

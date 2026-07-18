@@ -1,7 +1,7 @@
 /*
 ============================================================
 
-IoT Dashboard Framework
+ESP32 Smart Weather Station Dashboard
 Sensor Data Model
 
 ============================================================
@@ -13,45 +13,37 @@ export default class SensorData {
 
     constructor(rawData = {}) {
 
-        this.temperature = this.parseNumber(
+        this.temperature = this.parseValue(rawData.temperature);
 
-            rawData.temperature
+        this.humidity = this.parseValue(rawData.humidity);
 
-        );
-
-        this.humidity = this.parseNumber(
-
-            rawData.humidity
-
-        );
-
-        this.status =
-
-            rawData.status ||
-
-            STATUS.OFFLINE;
+        this.status = rawData.status || STATUS.OFFLINE;
 
         this.description =
-
             rawData.description ||
-
-            "No sensor description available.";
+            "Waiting for ESP32...";
 
         this.ip =
-
             rawData.ip ||
-
             "--";
 
         this.timestamp =
-
             rawData.timestamp ||
-
             new Date().toLocaleTimeString();
+
+        this.online =
+            rawData.online ??
+            (this.status !== STATUS.OFFLINE);
 
     }
 
-    parseNumber(value) {
+    parseValue(value) {
+
+        if (value === null || value === undefined || value === "") {
+
+            return null;
+
+        }
 
         const parsed = Number(value);
 
@@ -59,13 +51,25 @@ export default class SensorData {
 
             ? parsed
 
-            : 0;
+            : null;
+
+    }
+
+    hasTemperature() {
+
+        return this.temperature !== null;
+
+    }
+
+    hasHumidity() {
+
+        return this.humidity !== null;
 
     }
 
     isOnline() {
 
-        return this.status !== STATUS.OFFLINE;
+        return this.online;
 
     }
 

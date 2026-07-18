@@ -25,7 +25,7 @@ export const DOM = {
 
         document.getElementById("temperature"),
 
-    currentTemperature:
+    currentTemp:
 
         document.getElementById("currentTemp"),
 

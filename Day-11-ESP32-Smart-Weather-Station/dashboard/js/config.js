@@ -9,89 +9,19 @@ Configuration
 
 /*
 ============================================================
-API Configuration
+API
 ============================================================
 */
 
-export const API = {
+export const CONFIG = {
 
-    // For Local Testing
-    endpoint: "data/data.json",
+    API_URL: "http://127.0.0.1:5000/api/data",
 
-    // ESP32 Example
-    // endpoint: "http://10.10.0.2/data",
+    REFRESH_INTERVAL: 3000,
 
-    refreshInterval: 3000
+    MAX_DATA_POINTS: 20
 
 };
-
-
-/*
-============================================================
-Chart Configuration
-============================================================
-*/
-
-export const CHART = {
-
-    maxSamples: 20,
-
-    animationDuration: 800,
-
-    tension: 0.4,
-
-    borderWidth: 3,
-
-    pointRadius: 0,
-
-    pointHoverRadius: 5
-
-};
-
-
-/*
-============================================================
-Dashboard Information
-============================================================
-*/
-
-export const DASHBOARD = {
-
-    title: "ESP32 Smart Weather Station",
-
-    subtitle: "Environmental Monitoring Dashboard",
-
-    version: "2.0.0"
-
-};
-
-
-/*
-============================================================
-Sensor Thresholds
-============================================================
-*/
-
-export const THRESHOLDS = {
-
-    temperature: {
-
-        good: 30,
-
-        warning: 40
-
-    },
-
-    humidity: {
-
-        good: 70,
-
-        warning: 85
-
-    }
-
-};
-
 
 /*
 ============================================================
@@ -111,7 +41,6 @@ export const STATUS = {
 
 };
 
-
 /*
 ============================================================
 Colors
@@ -130,16 +59,33 @@ export const COLORS = {
 
     danger: "#EF4444",
 
-    text: "#F8FAFC",
+    primary: "#3B82F6",
 
-    secondaryText: "#94A3B8",
-
-    background: "#0B1120",
-
-    surface: "#182235"
+    secondaryText: "#94A3B8"
 
 };
 
+/*
+============================================================
+Chart Settings
+============================================================
+*/
+
+export const CHART = {
+
+    maxSamples: CONFIG.MAX_DATA_POINTS,
+
+    tension: 0.35,
+
+    borderWidth: 3,
+
+    pointRadius: 2,
+
+    pointHoverRadius: 5,
+
+    animationDuration: 500
+
+};
 
 /*
 ============================================================
@@ -149,23 +95,6 @@ Animations
 
 export const ANIMATION = {
 
-    valueDuration: 500,
-
-    fadeDuration: 300
-
-};
-
-
-/*
-============================================================
-Chart Labels
-============================================================
-*/
-
-export const LABELS = {
-
-    temperature: "Temperature",
-
-    humidity: "Humidity"
+    valueDuration: 500
 
 };

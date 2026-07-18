@@ -11,10 +11,6 @@ import { STATUS } from "./config.js";
 
 import {
 
-    formatTemperature,
-
-    formatHumidity,
-
     getCurrentTime,
 
     animateValue,
@@ -23,17 +19,11 @@ import {
 
 } from "./utils.js";
 
-/*
-============================================================
-DOM Elements
-============================================================
-*/
-
 import { DOM } from "./dom.js";
 
 /*
 ============================================================
-Initialize Dashboard
+Initialize
 ============================================================
 */
 
@@ -45,23 +35,19 @@ export function initializeDashboard() {
 
 /*
 ============================================================
-Update Dashboard
+Main Dashboard Update
 ============================================================
 */
 
 export function updateDashboard(sensorData) {
 
-    updateTemperature(sensorData.temperature);
+    updateTemperature(sensorData);
 
-    updateHumidity(sensorData.humidity);
+    updateHumidity(sensorData);
 
-    updateStatus(
+    updateStatus(sensorData);
 
-        sensorData.status,
-
-        sensorData.description
-
-    );
+    updateConnection(sensorData);
 
     updateFooter(sensorData);
 
@@ -75,13 +61,23 @@ Temperature
 ============================================================
 */
 
-function updateTemperature(value) {
+function updateTemperature(sensorData){
+
+    if(sensorData.temperature === null){
+
+        DOM.temperature.textContent="-- °C";
+
+        DOM.currentTemp.textContent="-- °C";
+
+        return;
+
+    }
 
     animateValue(
 
         DOM.temperature,
 
-        value,
+        sensorData.temperature,
 
         " °C"
 
@@ -91,7 +87,7 @@ function updateTemperature(value) {
 
         DOM.currentTemp,
 
-        value,
+        sensorData.temperature,
 
         " °C"
 
@@ -105,13 +101,23 @@ Humidity
 ============================================================
 */
 
-function updateHumidity(value) {
+function updateHumidity(sensorData){
+
+    if(sensorData.humidity === null){
+
+        DOM.humidity.textContent="-- %";
+
+        DOM.currentHumidity.textContent="-- %";
+
+        return;
+
+    }
 
     animateValue(
 
         DOM.humidity,
 
-        value,
+        sensorData.humidity,
 
         " %"
 
@@ -121,7 +127,7 @@ function updateHumidity(value) {
 
         DOM.currentHumidity,
 
-        value,
+        sensorData.humidity,
 
         " %"
 
@@ -135,25 +141,17 @@ Status
 ============================================================
 */
 
-function updateStatus(
+function updateStatus(sensorData){
 
-    status,
+    DOM.statusBadge.className="";
 
-    description
-
-) {
-
-    DOM.statusBadge.className = "";
-
-    switch(status){
+    switch(sensorData.status){
 
         case STATUS.GOOD:
 
             DOM.statusBadge.classList.add("good");
 
-            DOM.statusBadge.textContent =
-
-                "GOOD";
+            DOM.statusBadge.textContent="GOOD";
 
             break;
 
@@ -161,9 +159,7 @@ function updateStatus(
 
             DOM.statusBadge.classList.add("moderate");
 
-            DOM.statusBadge.textContent =
-
-                "MODERATE";
+            DOM.statusBadge.textContent="MODERATE";
 
             break;
 
@@ -171,9 +167,7 @@ function updateStatus(
 
             DOM.statusBadge.classList.add("extreme");
 
-            DOM.statusBadge.textContent =
-
-                "EXTREME";
+            DOM.statusBadge.textContent="EXTREME";
 
             break;
 
@@ -181,15 +175,49 @@ function updateStatus(
 
             DOM.statusBadge.classList.add("offline");
 
-            DOM.statusBadge.textContent =
-
-                "OFFLINE";
+            DOM.statusBadge.textContent="OFFLINE";
 
     }
 
-    DOM.statusDescription.textContent =
+    DOM.statusDescription.textContent=
 
-        description;
+        sensorData.description;
+
+}
+
+/*
+============================================================
+Connection Badge
+============================================================
+*/
+
+function updateConnection(sensorData){
+
+    if(sensorData.isOnline()){
+
+        DOM.connectionBadge.classList.remove("disconnected");
+
+        DOM.connectionBadge.classList.add("connected");
+
+        DOM.connectionBadge.innerHTML=
+
+            `<i class="fa-solid fa-circle"></i>
+             ESP32 Connected`;
+
+    }
+
+    else{
+
+        DOM.connectionBadge.classList.remove("connected");
+
+        DOM.connectionBadge.classList.add("disconnected");
+
+        DOM.connectionBadge.innerHTML=
+
+            `<i class="fa-solid fa-circle"></i>
+             ESP32 Offline`;
+
+    }
 
 }
 
@@ -201,21 +229,21 @@ Footer
 
 function updateFooter(sensorData){
 
-    DOM.lastUpdated.textContent =
+    DOM.lastUpdated.textContent=
 
         getCurrentTime();
 
-    DOM.ipAddress.textContent =
+    DOM.ipAddress.textContent=
 
         sensorData.ip;
 
-    DOM.wifiStatus.textContent =
+    DOM.wifiStatus.textContent=
 
-        sensorData.status === STATUS.OFFLINE
+        sensorData.isOnline()
 
-        ? "Disconnected"
+        ? "Connected"
 
-        : "Connected";
+        : "Disconnected";
 
 }
 
@@ -227,39 +255,32 @@ Offline State
 
 export function setOfflineState(){
 
-    updateStatus(
+    DOM.temperature.textContent="-- °C";
 
-        STATUS.OFFLINE,
+    DOM.currentTemp.textContent="-- °C";
 
-        "Waiting for ESP32..."
+    DOM.humidity.textContent="-- %";
 
-    );
+    DOM.currentHumidity.textContent="-- %";
 
-    DOM.wifiStatus.textContent =
+    DOM.wifiStatus.textContent="Disconnected";
 
-        "Disconnected";
+    DOM.ipAddress.textContent="--";
 
-    DOM.ipAddress.textContent =
+    DOM.lastUpdated.textContent="--:--:--";
 
-        "---";
+    updateConnection({
 
-    DOM.lastUpdated.textContent =
+        isOnline:()=>false
 
-        "--:--:--";
+    });
 
-}
+    updateStatus({
 
-/*
-============================================================
-Online State
-============================================================
-*/
+        status:STATUS.OFFLINE,
 
-export function setOnlineState(){
+        description:"Waiting for ESP32..."
 
-    DOM.connectionBadge.innerHTML =
-
-        `<i class="fa-solid fa-circle"></i>
-         ESP32 Connected`;
+    });
 
 }

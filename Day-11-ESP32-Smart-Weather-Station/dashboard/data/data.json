@@ -1,8 +1,0 @@
-{
-    "temperature": 24.5,
-    "humidity": 58.2,
-    "status": "GOOD",
-    "description": "Pleasant environmental conditions.",
-    "ip": "10.10.0.2",
-    "timestamp": "2026-07-16 20:00:00"
-}
