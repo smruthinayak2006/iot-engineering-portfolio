@@ -1,151 +1,189 @@
-# IoT Engineering Portfolio
+<div align="center">
 
-A hands-on portfolio of embedded systems projects built using Arduino, sensors, and simulation tools to strengthen practical IoT engineering skills.
+# 🚀 IoT Engineering Portfolio
 
-Each project focuses on solving a real-world problem using sensor interfacing, embedded programming, and hardware-software integration while maintaining a consistent project structure and documentation.
+### Building practical Embedded Systems & IoT projects, one step at a time.
+
+From Arduino fundamentals to full-stack ESP32 applications with interactive dashboards.
+
+**Arduino • ESP32 • Python • Flask • JavaScript • IoT**
+
+</div>
 
 ---
 
-## Repository Goals
+![Projects](https://img.shields.io/badge/Projects-11-blue)
+![Status](https://img.shields.io/badge/Status-Active-success)
+![Platform](https://img.shields.io/badge/Platform-Arduino%20%7C%20ESP32-orange)
+![Focus](https://img.shields.io/badge/Focus-Embedded%20Systems-purple)
 
-This repository is built to demonstrate practical experience with:
+---
 
-- Embedded Systems Programming
-- Arduino Development
+## ⭐ New Here?
+
+There are two ways to explore this repository:
+
+📖 **Follow the Journey**
+
+Start with **Day 01** and progress through increasingly complex projects, from basic sensor interfacing to complete IoT applications.
+
+⚡ **Jump to the Showcase**
+
+Explore **Day 11 – ESP32 Smart Weather Station**, the most advanced project featuring an ESP32, Flask backend, REST API, and an interactive dashboard.
+
+---
+
+# 📡 Featured Project
+
+<p align="center">
+<img src="Day-11-ESP32-Smart-Weather-Station/screenshots/dashboard-overview.png" width="900">
+</p>
+
+### ESP32 Smart Weather Station
+
+A full-stack IoT application combining embedded hardware with a modern web dashboard.
+
+### Highlights
+
+- 🌡️ Live Temperature & Humidity Monitoring
+- 📊 Interactive Charts
+- 📡 ESP32 REST API Communication
+- 🧪 Automatic Simulation Mode
+- 🎨 Responsive Dashboard
+- ⚙️ Modular Frontend & Backend
+
+---
+
+# 📂 Project Timeline
+
+| Day | Project | Technologies |
+|------|---------|--------------|
+| 01 | 🔥 Smart Fire Detection System | Arduino • TMP36 |
+| 02 | 💧 Smart Water Tank Level Monitor | Arduino • HC-SR04 |
+| 03 | 🚨 Smart Intrusion Detection System | Arduino • PIR |
+| 04 | 🌿 Smart Environment Monitor | Arduino • DHT22 |
+| 05 | 💡 Smart Street Light Automation | Arduino • LDR |
+| 06 | 🚗 Smart Parking System | Arduino • HC-SR04 |
+| 07 | 🛢 Smart Gas Leakage Detection | Arduino • MQ-2 |
+| 08 | 🌱 Smart Soil Moisture Monitor | Arduino • Soil Moisture |
+| 09 | 🏠 Smart Home Automation | Arduino • PIR • LDR |
+| 10 | 🌤 Smart Weather Station | Arduino • DHT22 |
+| 11 | 📡 ESP32 Smart Weather Station | ESP32 • Flask • JavaScript • Chart.js |
+
+> Every project includes source code, documentation, circuit diagrams, and demonstration screenshots.
+
+---
+
+# 🎯 Skills Demonstrated
+
+### Embedded Systems
+
+- Arduino Programming
+- ESP32 Development
 - Sensor Interfacing
-- Real-Time Monitoring Systems
-- Hardware Debugging
-- IoT System Design
+- GPIO Programming
+- Analog & Digital Signal Processing
+
+### IoT Development
+
+- REST APIs
+- Flask
+- Dashboard Development
+- Hardware–Software Integration
+- Real-Time Data Visualization
+
+### Engineering Practices
+
+- Modular Architecture
 - Technical Documentation
 - Git & GitHub Workflow
-
-The long-term objective is to progressively evolve these Arduino prototypes into ESP32-based IoT solutions featuring Wi-Fi connectivity, dashboards, cloud integration, and remote monitoring.
-
----
-
-# Repository Structure
-
-```
-IoT-Engineering-Portfolio/
-
-├── Day-01-Smart-Fire-Detection-System/
-├── Day-02-Smart-Water-Tank-Level-Monitor/
-├──...
-
-└── README.md
-```
+- Problem Solving
 
 ---
 
-# Completed Projects
+# 🛠 Technology Stack
 
-| Day | Project | Sensors |
-|-----|---------|----------|
-| 01 | Smart Fire Detection System | TMP36 |
-| 02 | Smart Water Tank Level Monitor | HC-SR04 |
-| 03 | Smart Intrusion Detection System | PIR |
-| 04 | Smart Environment Monitor | DHT22 |
-| 05 | Smart Street Light Automation | LDR |
-| 06 | Smart Parking System | HC-SR04 |
-| 07 | Smart Gas Leakage Detection | MQ-2 |
-| 08 | Smart Soil Moisture Monitor | Soil Moisture (Simulated) |
-| 09 | Smart Home Automation | PIR + LDR |
-| 10 | Smart Weather Station | DHT22 |
-
----
-
-# Standard Project Layout
-
-Every project follows the same structure for consistency.
-
-```
-Project/
-│
-├── circuit/
-│   └── circuit_diagram.png
-│
-├── code/
-│   └── project_name.ino
-│
-├── docs/
-│   └── architecture.md
-│
-├── screenshots/
-│   ├── operating_modes...
-│   └── serial_monitor.png
-│
-└── README.md
-```
-
----
-
-# Technologies Used
+### Hardware
 
 - Arduino Uno
+- ESP32
+- DHT22
+- HC-SR04
+- PIR Sensor
+- MQ-2 Gas Sensor
+- LDR
+- Soil Moisture Sensor
+
+### Software
+
 - Embedded C++
-- Wokwi Simulator
+- Python
+- Flask
+- HTML5
+- CSS3
+- JavaScript
+- Chart.js
 - Arduino IDE
-- Git
-- GitHub
+- Wokwi
+- Git & GitHub
 
 ---
 
-# Skills Demonstrated
+# 📁 Repository Structure
 
-- Sensor Interfacing
-- Analog & Digital Input Processing
-- GPIO Programming
-- Threshold-Based Decision Making
-- State Machine Design
-- Embedded Debugging
-- Hardware Documentation
-- Technical Writing
+```text
+IoT-Engineering-Portfolio
+│
+├── Day-01-Smart-Fire-Detection-System
+├── Day-02-Smart-Water-Tank-Level-Monitor
+├── ...
+├── Day-11-ESP32-Smart-Weather-Station
+│
+└── README.md
+```
 
----
+Each project contains:
 
-# Roadmap
-
-### Phase 1 — Embedded Systems ✅
-
-- Arduino Projects
-- Sensor Interfacing
-- Hardware Documentation
-
-### Phase 2 — IoT Development (Next)
-
-Projects will be upgraded using ESP32 to support:
-
-- Wi-Fi Connectivity
-- Web Dashboards
-- Email Notifications
-- MQTT Communication
-- REST APIs
-- Cloud Data Logging
-
-### Phase 3 — Advanced IoT
-
-- Raspberry Pi Edge Gateway
-- Camera Integration
-- AI-based Detection
-- Edge Computing
-- Remote Device Management
+- 📘 README
+- 💻 Source Code
+- ⚡ Circuit Diagram
+- 📷 Screenshots
+- 📝 Documentation
 
 ---
 
-# Running a Project
+# 🚧 What's Next?
 
-1. Open any project folder.
-2. Load the `.ino` file in Arduino IDE or Wokwi.
-3. Build the circuit using the provided diagram.
-4. Run the simulation.
-5. Observe LEDs, buzzer, and Serial Monitor output.
+This portfolio will continue expanding with projects involving:
+
+- ☁️ Cloud Integration
+- 📡 MQTT Communication
+- 🔔 Smart Notifications
+- 📱 Mobile Dashboards
+- 🤖 Edge AI
+- 🍓 Raspberry Pi
+- 📷 Computer Vision
+- 🔐 Secure IoT Applications
 
 ---
 
-## Author
+# 👩‍💻 About Me
 
 **Smruthi Nayak**
 
 B.Tech Computer Science & Engineering
 
-Building practical IoT and Embedded Systems projects while progressing toward connected IoT solutions.
+Passionate about **Embedded Systems**, **IoT**, and **Cybersecurity**.
+
+- 💼 LinkedIn: https://www.linkedin.com/in/smruthi-nayak-51b31731a
+- 💻 GitHub: https://github.com/smruthinayak2006
+
+---
+
+<div align="center">
+
+⭐ **If you enjoyed exploring these projects, consider giving the repository a star!**
+
+Thanks for visiting my IoT Engineering Portfolio.
+
+</div>
