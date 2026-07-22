@@ -13,9 +13,13 @@ export const DOM = {
        Header
     ====================================================== */
 
-    connectionBadge:
+   connectionBadge:
 
         document.getElementById("connectionBadge"),
+
+    modeChip:
+
+        document.getElementById("modeChip"),
 
     /* ======================================================
        Temperature
@@ -60,6 +64,10 @@ export const DOM = {
     wifiStatus:
 
         document.getElementById("wifiStatus"),
+
+    sensorStatus:
+
+        document.getElementById("sensorStatus"),
 
     ipAddress:
 

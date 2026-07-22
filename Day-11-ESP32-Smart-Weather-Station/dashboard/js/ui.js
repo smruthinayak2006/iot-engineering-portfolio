@@ -61,13 +61,13 @@ Temperature
 ============================================================
 */
 
-function updateTemperature(sensorData){
+function updateTemperature(sensorData) {
 
-    if(sensorData.temperature === null){
+    if (sensorData.temperature === null) {
 
-        DOM.temperature.textContent="-- °C";
+        DOM.temperature.textContent = "-- °C";
 
-        DOM.currentTemp.textContent="-- °C";
+        DOM.currentTemp.textContent = "-- °C";
 
         return;
 
@@ -101,13 +101,13 @@ Humidity
 ============================================================
 */
 
-function updateHumidity(sensorData){
+function updateHumidity(sensorData) {
 
-    if(sensorData.humidity === null){
+    if (sensorData.humidity === null) {
 
-        DOM.humidity.textContent="-- %";
+        DOM.humidity.textContent = "-- %";
 
-        DOM.currentHumidity.textContent="-- %";
+        DOM.currentHumidity.textContent = "-- %";
 
         return;
 
@@ -141,17 +141,17 @@ Status
 ============================================================
 */
 
-function updateStatus(sensorData){
+function updateStatus(sensorData) {
 
-    DOM.statusBadge.className="";
+    DOM.statusBadge.className = "";
 
-    switch(sensorData.status){
+    switch (sensorData.status) {
 
         case STATUS.GOOD:
 
             DOM.statusBadge.classList.add("good");
 
-            DOM.statusBadge.textContent="GOOD";
+            DOM.statusBadge.textContent = "GOOD";
 
             break;
 
@@ -159,7 +159,7 @@ function updateStatus(sensorData){
 
             DOM.statusBadge.classList.add("moderate");
 
-            DOM.statusBadge.textContent="MODERATE";
+            DOM.statusBadge.textContent = "MODERATE";
 
             break;
 
@@ -167,7 +167,7 @@ function updateStatus(sensorData){
 
             DOM.statusBadge.classList.add("extreme");
 
-            DOM.statusBadge.textContent="EXTREME";
+            DOM.statusBadge.textContent = "EXTREME";
 
             break;
 
@@ -175,12 +175,11 @@ function updateStatus(sensorData){
 
             DOM.statusBadge.classList.add("offline");
 
-            DOM.statusBadge.textContent="OFFLINE";
+            DOM.statusBadge.textContent = "OFFLINE";
 
     }
 
-    DOM.statusDescription.textContent =
-        sensorData.description;
+    DOM.statusDescription.textContent = sensorData.description;
 
 }
 
@@ -190,42 +189,39 @@ Connection Badge
 ============================================================
 */
 
-function updateConnection(sensorData){
+function updateConnection(sensorData) {
 
     DOM.connectionBadge.className = "";
 
-    if(sensorData.simulated){
+    if (sensorData.simulated) {
 
         DOM.connectionBadge.classList.add("simulation");
 
         DOM.connectionBadge.innerHTML =
 
-            `<i class="fa-solid fa-flask"></i>
-             Simulation Mode`;
+            `<i class="fa-solid fa-flask"></i> Simulation Mode`;
 
         return;
 
     }
 
-    if(sensorData.isOnline()){
+    if (sensorData.isOnline()) {
 
         DOM.connectionBadge.classList.add("connected");
 
         DOM.connectionBadge.innerHTML =
 
-            `<i class="fa-solid fa-circle"></i>
-             ESP32 Connected`;
+            `<i class="fa-solid fa-circle"></i> ESP32 Connected`;
 
     }
 
-    else{
+    else {
 
         DOM.connectionBadge.classList.add("disconnected");
 
         DOM.connectionBadge.innerHTML =
 
-            `<i class="fa-solid fa-circle"></i>
-             ESP32 Offline`;
+            `<i class="fa-solid fa-circle"></i> ESP32 Offline`;
 
     }
 
@@ -237,7 +233,7 @@ Footer
 ============================================================
 */
 
-function updateFooter(sensorData){
+function updateFooter(sensorData) {
 
     DOM.lastUpdated.textContent =
         getCurrentTime();
@@ -245,21 +241,57 @@ function updateFooter(sensorData){
     DOM.ipAddress.textContent =
         sensorData.ip;
 
-    if(sensorData.simulated){
+    if (sensorData.simulated) {
 
         DOM.wifiStatus.textContent =
             "Simulation";
 
+        if (DOM.sensorStatus) {
+
+            DOM.sensorStatus.textContent =
+                "Simulation";
+
+        }
+
+        if (DOM.modeChip) {
+
+            DOM.modeChip.innerHTML =
+
+                `<i class="fa-solid fa-flask"></i> SIMULATION`;
+
+        }
+
     }
 
-    else{
+    else {
 
         DOM.wifiStatus.textContent =
+
             sensorData.isOnline()
 
-            ? "Connected"
+                ? "Connected"
 
-            : "Disconnected";
+                : "Disconnected";
+
+        if (DOM.sensorStatus) {
+
+            DOM.sensorStatus.textContent =
+
+                sensorData.isOnline()
+
+                    ? "DHT22 Online"
+
+                    : "Disconnected";
+
+        }
+
+        if (DOM.modeChip) {
+
+            DOM.modeChip.innerHTML =
+
+                `<i class="fa-solid fa-circle-play"></i> LIVE`;
+
+        }
 
     }
 
@@ -271,35 +303,41 @@ Offline State
 ============================================================
 */
 
-export function setOfflineState(){
+export function setOfflineState() {
 
-    DOM.temperature.textContent="-- °C";
+    DOM.temperature.textContent = "-- °C";
 
-    DOM.currentTemp.textContent="-- °C";
+    DOM.currentTemp.textContent = "-- °C";
 
-    DOM.humidity.textContent="-- %";
+    DOM.humidity.textContent = "-- %";
 
-    DOM.currentHumidity.textContent="-- %";
+    DOM.currentHumidity.textContent = "-- %";
 
-    DOM.wifiStatus.textContent="Disconnected";
+    DOM.wifiStatus.textContent = "Disconnected";
 
-    DOM.ipAddress.textContent="--";
+    DOM.ipAddress.textContent = "--";
 
-    DOM.lastUpdated.textContent="--:--:--";
+    DOM.lastUpdated.textContent = "--:--:--";
+
+    if (DOM.sensorStatus) {
+
+        DOM.sensorStatus.textContent = "Disconnected";
+
+    }
 
     updateConnection({
 
-        isOnline:()=>false,
+        isOnline: () => false,
 
-        simulated:false
+        simulated: false
 
     });
 
     updateStatus({
 
-        status:STATUS.OFFLINE,
+        status: STATUS.OFFLINE,
 
-        description:"Waiting for ESP32..."
+        description: "Waiting for ESP32..."
 
     });
 
