@@ -1,3 +1,10 @@
 @import url("./theme.css");
 @import url("./layout.css");
-@import url("./components.css");
+
+@import url("./modules/header.css");
+@import url("./modules/chips.css");
+@import url("./modules/sensor-cards.css");
+@import url("./modules/charts.css");
+@import url("./modules/footer.css");
+@import url("./modules/animations.css");
+@import url("./modules/utilities.css");

@@ -1,0 +1,298 @@
+/*
+============================================================
+
+Weather Dashboard
+Sensor Cards
+
+============================================================
+*/
+
+/* ==========================================================
+   Shared Sensor Card
+========================================================== */
+
+.card{
+
+    position:relative;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:space-between;
+
+    padding:24px;
+
+    min-height:185px;
+
+    overflow:hidden;
+
+    border-radius:var(--radius);
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(var(--blur));
+
+    -webkit-backdrop-filter:blur(var(--blur));
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.card:hover{
+
+    transform:translateY(-6px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+/* ==========================================================
+   Top Accent
+========================================================== */
+
+.card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:5px;
+
+}
+
+.temperature-card::before{
+
+    background:linear-gradient(
+        90deg,
+        #FDBA74,
+        var(--temperature)
+    );
+
+}
+
+.humidity-card::before{
+
+    background:linear-gradient(
+        90deg,
+        #7DD3FC,
+        var(--humidity)
+    );
+
+}
+
+.status-card::before{
+
+    background:linear-gradient(
+        90deg,
+        #86EFAC,
+        var(--success)
+    );
+
+}
+
+/* ==========================================================
+   Icons
+========================================================== */
+
+.card-icon{
+
+    width:62px;
+
+    height:62px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:26px;
+
+    margin-bottom:22px;
+
+}
+
+.temperature-card .card-icon{
+
+    background:rgba(245,158,11,.12);
+
+    color:var(--temperature);
+
+}
+
+.humidity-card .card-icon{
+
+    background:rgba(14,165,233,.12);
+
+    color:var(--humidity);
+
+}
+
+.status-card .card-icon{
+
+    background:rgba(34,197,94,.12);
+
+    color:var(--success);
+
+}
+
+/* ==========================================================
+   Heading
+========================================================== */
+
+.card h3{
+
+    color:var(--text-secondary);
+
+    font-size:1rem;
+
+    font-weight:600;
+
+    margin-bottom:16px;
+
+}
+
+/* ==========================================================
+   Sensor Value
+========================================================== */
+
+.card h2{
+
+    font-size:3rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    letter-spacing:-2px;
+
+    line-height:1;
+
+}
+
+/* ==========================================================
+   Temperature
+========================================================== */
+
+#temperature{
+
+    color:var(--temperature);
+
+}
+
+/* ==========================================================
+   Humidity
+========================================================== */
+
+#humidity{
+
+    color:var(--humidity);
+
+}
+
+/* ==========================================================
+   Status Badge
+========================================================== */
+
+#statusBadge{
+
+    width:max-content;
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    padding:10px 22px;
+
+    border-radius:999px;
+
+    font-size:.88rem;
+
+    font-weight:700;
+
+    margin:16px 0;
+
+}
+
+.good{
+
+    background:rgba(34,197,94,.12);
+
+    color:var(--success);
+
+}
+
+.moderate{
+
+    background:rgba(245,158,11,.12);
+
+    color:var(--warning);
+
+}
+
+.extreme{
+
+    background:rgba(239,68,68,.12);
+
+    color:var(--danger);
+
+}
+
+.offline{
+
+    background:rgba(148,163,184,.15);
+
+    color:#64748B;
+
+}
+
+/* ==========================================================
+   Status Description
+========================================================== */
+
+#statusDescription{
+
+    color:var(--text-secondary);
+
+    line-height:1.7;
+
+    margin-top:auto;
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:768px){
+
+    .card{
+
+        min-height:200px;
+
+        padding:22px;
+
+    }
+
+    .card h2{
+
+        font-size:2.7rem;
+
+    }
+
+}

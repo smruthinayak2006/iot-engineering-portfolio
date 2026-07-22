@@ -1,0 +1,182 @@
+/*
+============================================================
+
+Weather Dashboard
+Header Module
+
+============================================================
+*/
+
+/* ==========================================================
+   Header Container
+========================================================== */
+
+.dashboard-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:32px;
+
+    margin-bottom:38px;
+
+}
+
+/* ==========================================================
+   Left Section
+========================================================== */
+
+.header-left{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+}
+
+.header-left h1{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    font-size:2.3rem;
+
+    font-weight:800;
+
+    color:var(--text);
+
+    letter-spacing:-1px;
+
+}
+
+.header-left h1 i{
+
+    color:#FDB813;
+
+    font-size:2rem;
+
+}
+
+.header-left p{
+
+    font-size:1rem;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================================
+   Right Section
+========================================================== */
+
+.header-right{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:flex-end;
+
+}
+
+/* ==========================================================
+   Connection Badge
+========================================================== */
+
+#connectionBadge{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:12px 22px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.65);
+
+    backdrop-filter:blur(18px);
+
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.55);
+
+    box-shadow:0 8px 24px rgba(15,23,42,.08);
+
+    font-weight:600;
+
+    color:var(--text);
+
+    transition:.3s ease;
+
+}
+
+#connectionBadge i{
+
+    font-size:11px;
+
+}
+
+/* ==========================================================
+   Connected
+========================================================== */
+
+.connected i{
+
+    color:#22C55E;
+
+}
+
+/* ==========================================================
+   Disconnected
+========================================================== */
+
+.disconnected i{
+
+    color:#EF4444;
+
+}
+
+/* ==========================================================
+   Hover
+========================================================== */
+
+#connectionBadge:hover{
+
+    transform:translateY(-2px);
+
+    box-shadow:0 16px 30px rgba(15,23,42,.12);
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:768px){
+
+    .dashboard-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+    }
+
+    .header-left h1{
+
+        font-size:1.9rem;
+
+    }
+
+}

@@ -1,0 +1,142 @@
+/*
+============================================================
+
+Weather Dashboard
+Footer Module
+
+============================================================
+*/
+
+/* ==========================================================
+   Footer Grid
+========================================================== */
+
+.footer-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(4,1fr);
+
+    gap:20px;
+
+}
+
+/* ==========================================================
+   Footer Card
+========================================================== */
+
+.footer-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+    padding:18px;
+
+    border-radius:var(--radius);
+
+    background:rgba(255,255,255,.72);
+
+    backdrop-filter:blur(var(--blur));
+
+    -webkit-backdrop-filter:blur(var(--blur));
+
+    border:1px solid var(--border);
+
+    box-shadow:var(--shadow);
+
+    transition:var(--transition);
+
+}
+
+.footer-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-hover);
+
+}
+
+/* ==========================================================
+   Icon
+========================================================== */
+
+.footer-card i{
+
+    width:48px;
+
+    height:48px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    border-radius:16px;
+
+    background:rgba(37,99,235,.10);
+
+    color:var(--primary);
+
+    font-size:22px;
+
+    transition:.3s ease;
+
+}
+
+.footer-card:hover i{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/* ==========================================================
+   Content
+========================================================== */
+
+.footer-card h4{
+
+    font-size:15px;
+
+    margin-bottom:4px;
+
+    color:var(--text);
+
+}
+
+.footer-card span{
+
+    font-size:14px;
+
+    color:var(--text-secondary);
+
+}
+
+/* ==========================================================
+   Responsive
+========================================================== */
+
+@media(max-width:1200px){
+
+    .footer-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+@media(max-width:768px){
+
+    .footer-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

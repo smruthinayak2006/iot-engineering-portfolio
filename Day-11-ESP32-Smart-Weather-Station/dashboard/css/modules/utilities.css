@@ -1,0 +1,82 @@
+/*
+============================================================
+
+Weather Dashboard
+Utilities
+
+============================================================
+*/
+
+.hidden{
+
+    display:none!important;
+
+}
+
+.text-success{
+
+    color:var(--success);
+
+}
+
+.text-warning{
+
+    color:var(--warning);
+
+}
+
+.text-danger{
+
+    color:var(--danger);
+
+}
+
+.text-muted{
+
+    color:var(--text-secondary);
+
+}
+
+.center{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.w-100{
+
+    width:100%;
+
+}
+
+::selection{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:#A7C7F7;
+
+    border-radius:999px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:#EAF5FF;
+
+}
