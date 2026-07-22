@@ -179,8 +179,7 @@ function updateStatus(sensorData){
 
     }
 
-    DOM.statusDescription.textContent=
-
+    DOM.statusDescription.textContent =
         sensorData.description;
 
 }
@@ -193,13 +192,26 @@ Connection Badge
 
 function updateConnection(sensorData){
 
-    if(sensorData.isOnline()){
+    DOM.connectionBadge.className = "";
 
-        DOM.connectionBadge.classList.remove("disconnected");
+    if(sensorData.simulated){
+
+        DOM.connectionBadge.classList.add("simulation");
+
+        DOM.connectionBadge.innerHTML =
+
+            `<i class="fa-solid fa-flask"></i>
+             Simulation Mode`;
+
+        return;
+
+    }
+
+    if(sensorData.isOnline()){
 
         DOM.connectionBadge.classList.add("connected");
 
-        DOM.connectionBadge.innerHTML=
+        DOM.connectionBadge.innerHTML =
 
             `<i class="fa-solid fa-circle"></i>
              ESP32 Connected`;
@@ -208,11 +220,9 @@ function updateConnection(sensorData){
 
     else{
 
-        DOM.connectionBadge.classList.remove("connected");
-
         DOM.connectionBadge.classList.add("disconnected");
 
-        DOM.connectionBadge.innerHTML=
+        DOM.connectionBadge.innerHTML =
 
             `<i class="fa-solid fa-circle"></i>
              ESP32 Offline`;
@@ -229,21 +239,29 @@ Footer
 
 function updateFooter(sensorData){
 
-    DOM.lastUpdated.textContent=
-
+    DOM.lastUpdated.textContent =
         getCurrentTime();
 
-    DOM.ipAddress.textContent=
-
+    DOM.ipAddress.textContent =
         sensorData.ip;
 
-    DOM.wifiStatus.textContent=
+    if(sensorData.simulated){
 
-        sensorData.isOnline()
+        DOM.wifiStatus.textContent =
+            "Simulation";
 
-        ? "Connected"
+    }
 
-        : "Disconnected";
+    else{
+
+        DOM.wifiStatus.textContent =
+            sensorData.isOnline()
+
+            ? "Connected"
+
+            : "Disconnected";
+
+    }
 
 }
 
@@ -271,7 +289,9 @@ export function setOfflineState(){
 
     updateConnection({
 
-        isOnline:()=>false
+        isOnline:()=>false,
+
+        simulated:false
 
     });
 

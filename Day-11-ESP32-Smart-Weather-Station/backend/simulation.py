@@ -7,66 +7,54 @@ Simulation Provider
 ============================================================
 """
 
-import random
-
 from datetime import datetime
-
 from models import SensorData
 
 
 class SimulationProvider:
     """
-    Generates realistic sensor readings for development.
+    Cycles through realistic weather conditions.
     """
 
     def __init__(self):
 
-        self.temperature = 24.5
-        self.humidity = 58.0
+        self.index = 0
 
-    def _update_temperature(self):
+        self.samples = [
 
-        change = random.uniform(-0.4, 0.4)
+            (24.0, 55.0),
+            (25.5, 58.0),
+            (27.0, 62.0),
+            (29.5, 67.0),
 
-        self.temperature += change
+            (31.5, 72.0),
+            (33.5, 76.0),
+            (36.0, 80.0),
+            (38.5, 84.0),
 
-        self.temperature = max(
+            (41.0, 87.0),
+            (43.0, 91.0),
+            (44.5, 94.0),
 
-            18.0,
+            (40.0, 88.0),
+            (36.0, 80.0),
+            (32.0, 72.0),
+            (28.0, 65.0),
+            (25.0, 58.0)
 
-            min(
+        ]
 
-                self.temperature,
+    def _next_reading(self):
 
-                45.0
+        reading = self.samples[self.index]
 
-            )
+        self.index = (self.index + 1) % len(self.samples)
 
-        )
+        return reading
 
-    def _update_humidity(self):
+    def _calculate_status(self, temperature, humidity):
 
-        change = random.uniform(-1.5, 1.5)
-
-        self.humidity += change
-
-        self.humidity = max(
-
-            35.0,
-
-            min(
-
-                self.humidity,
-
-                95.0
-
-            )
-
-        )
-
-    def _calculate_status(self):
-
-        if self.temperature < 30 and self.humidity < 70:
+        if temperature < 30 and humidity < 70:
 
             return (
 
@@ -76,7 +64,7 @@ class SimulationProvider:
 
             )
 
-        if self.temperature < 40 and self.humidity < 85:
+        if temperature < 40 and humidity < 85:
 
             return (
 
@@ -96,29 +84,21 @@ class SimulationProvider:
 
     def get_sensor_data(self):
 
-        self._update_temperature()
+        temperature, humidity = self._next_reading()
 
-        self._update_humidity()
+        status, description = self._calculate_status(
 
-        status, description = self._calculate_status()
+            temperature,
+
+            humidity
+
+        )
 
         return SensorData(
 
-            temperature=round(
+            temperature=temperature,
 
-                self.temperature,
-
-                1
-
-            ),
-
-            humidity=round(
-
-                self.humidity,
-
-                1
-
-            ),
+            humidity=humidity,
 
             status=status,
 
@@ -126,7 +106,9 @@ class SimulationProvider:
 
             ip="Simulation",
 
-            online=True,
+            online=False,
+
+            simulated=True,
 
             timestamp=datetime.now().strftime(
 

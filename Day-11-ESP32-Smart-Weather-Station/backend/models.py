@@ -23,6 +23,7 @@ class SensorData:
     description: str
     ip: str
     online: bool
+    simulated: bool
     timestamp: str
 
     def to_dict(self) -> dict:
@@ -51,6 +52,8 @@ def create_offline_data() -> SensorData:
         ip="--",
 
         online=False,
+
+        simulated=False,
 
         timestamp=datetime.now().strftime("%H:%M:%S")
 

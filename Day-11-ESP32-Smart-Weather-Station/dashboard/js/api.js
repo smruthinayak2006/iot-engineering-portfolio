@@ -7,7 +7,7 @@ API Module
 ============================================================
 */
 
-import { CONFIG, STATUS } from "./config.js";
+import { CONFIG } from "./config.js";
 import SensorData from "./models/SensorData.js";
 
 /*
@@ -21,34 +21,33 @@ export async function fetchSensorData() {
     try {
 
         const response = await fetch(CONFIG.API_URL, {
-
             method: "GET",
-
             cache: "no-store"
-
         });
 
         if (!response.ok) {
-
             throw new Error(`HTTP ${response.status}`);
-
         }
 
         const data = await response.json();
 
         return new SensorData({
 
-            temperature: Number(data.temperature),
+            temperature: data.temperature,
 
-            humidity: Number(data.humidity),
+            humidity: data.humidity,
 
             status: data.status,
 
             description: data.description,
 
-            timestamp: new Date().toLocaleTimeString(),
+            ip: data.ip,
 
-            online: true
+            timestamp: data.timestamp,
+
+            online: data.online,
+
+            simulated: data.simulated
 
         });
 
@@ -56,23 +55,9 @@ export async function fetchSensorData() {
 
     catch (error) {
 
-        console.error("ESP32 Connection Error:", error);
+        console.error("API Error:", error);
 
-        return new SensorData({
-
-            temperature: null,
-
-            humidity: null,
-
-            status: STATUS.OFFLINE,
-
-            description: "Unable to reach ESP32.",
-
-            timestamp: new Date().toLocaleTimeString(),
-
-            online: false
-
-        });
+        return new SensorData();
 
     }
 
@@ -96,13 +81,7 @@ export function startDataPolling(callback) {
 
     update();
 
-    return setInterval(
-
-        update,
-
-        CONFIG.REFRESH_INTERVAL
-
-    );
+    return setInterval(update, CONFIG.REFRESH_INTERVAL);
 
 }
 

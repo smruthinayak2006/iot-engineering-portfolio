@@ -35,6 +35,9 @@ export default class SensorData {
             rawData.online ??
             (this.status !== STATUS.OFFLINE);
 
+        this.simulated =
+            rawData.simulated ?? false;
+
     }
 
     parseValue(value) {
